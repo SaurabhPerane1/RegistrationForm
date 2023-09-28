@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: radial-gradient(circle, #3498db, #2980b9);
+        }
+        h1{
+            text-align: center;
+        }
+        form{
+            max-width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label{
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],input[type="email"],input[type="number"]{
+            width: 99%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="button"]{
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        input[type="button"]:hover{
+            background-color: #0004ff;
+            box-shadow: 0px 0px 20px rgb(26, 2, 238);
+            transition: 2ms;
+        }
+        #displayData{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form id="registrationForm">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <input type="button" value="Register" onclick="display()">
+    </form>
+
+    <div id="displayData"></div>
+
+    <script>
+        var registrations = [];
+        function display(){
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var age = document.getElementById("age").value;
+
+            var registrationData = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                age: age
+            };
+
+            registrations.push(registrationData);
+
+            var displayData = document.getElementById("displayData");
+            displayData.innerHTML = "<h2>Registration Details:</h2>";
+
+            for(var i=0; i<registrations.length; i++){
+                
+                displayData.innerHTML += "<p><strong>registration : "+(i+1)+"</strong></p>";
+                displayData.innerHTML += "<p>First Name: "+registrations[i].firstName+"</p>";
+                displayData.innerHTML += "<p>Last Name: "+registrations[i].lastName+"</p>";
+                displayData.innerHTML += "<p>Email: "+registrations[i].email+"</p>";
+                displayData.innerHTML += "<p>Age: "+registrations[i].age+"</p>";
+                displayData.innerHTML += "<hr>";
+            }
+
+
+        }
+    </script>
+</body>
+</html>
